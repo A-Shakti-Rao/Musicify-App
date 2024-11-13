@@ -66,7 +66,7 @@ async function apiData() {
 
   // Playing The Songs Whenever User Clicks On The Card
   let currentSong = new Audio();
-  currentSong.id = localStorage.getItem("currentSong.id");
+  currentSong.id = 0;
   currentSong.src = localStorage.getItem("currentSong");
   musicPlayerUpdate();
   document.getElementById("play_btn").src = "./Assests/play_player.png";
