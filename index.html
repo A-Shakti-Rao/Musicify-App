@@ -4,13 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Musicify</title>
+  <link rel="icon" type="image/x-icon" href="./Assests/spotify.png">
   <link rel="stylesheet" href="./output.css">
   <link rel="stylesheet" href="./style.css">
 </head>
 
-<body class="bg-black text-white font-poppins flex justify-center items-center w-full">
-  <div class="sidebar max-lg:hidden bg-black h-95% w-1/4 ml-3">
+<body class="bg-black text-white max-lg:overflow-y-hidden font-poppins flex justify-center items-center w-full">
+  <div class="sidebar h-95% w-1/4 ml-3 max-lg:hidden">
 
     <div class="homeBox bg-box-gray-1 w-full h-1/5 rounded-md p-3 flex flex-col justify-center ">
       <div class="h-2/4 w-full">
@@ -54,188 +55,50 @@
     </div>
   </div>
 
-  <div class="mainbar bg-box-gray-1 h-95% rounded-md w-3/4 mr-3 ml-3 max-lg:w-full">
+  <div
+    class="mainbar bg-box-gray-1 h-95% rounded-md w-3/4 mr-3 ml-3 max-lg:h-full max-lg:w-full max-lg:mr-0 max-lg:ml-0">
     <nav class="h-18 bg-box-gray-2 flex justify-between items-center pl-12 pr-12">
       <div class="">
-        <img class="w-6 mr-3 inline-block" src="./Assests/songs.png" alt="Songs">
-        <h1 class="inline text-xl font-semibold">Songs</h1>
+        <img class="w-6 mr-3 inline-block max-lg:w-5" src="./Assests/songs.png" alt="Songs">
+        <h1 class="inline text-xl font-semibold max-lg:text-base">Songs</h1>
       </div>
       <div class="">
-        <button class="text-gray-300 font-bold  pr-5 pl-5 pt-2 pb-2 rounded-3xl text-sm" type="button">Sign up</button>
-        <button class="text-black bg-white font-bold pr-6 pl-6 pt-3 pb-3 rounded-3xl text-sm" type="button">Log
+        <button id="shakti" class="text-gray-300 font-bold pr-5 pl-5 pt-2 pb-2 rounded-3xl text-sm max-lg:text-xs"
+          type="button">Sign up</button>
+        <button
+          class="text-black bg-white font-bold pr-6 pl-6 pt-3 pb-3 rounded-3xl text-sm max-lg:text-xs max-lg:pr-4 max-lg:pl-4 max-lg:pt-2 max-lg:pb-2"
+          type="button">Log
           in</button>
       </div>
     </nav>
 
-    <div class="song-cards w-5/5 h-76% pt-7 pb-7 mr-7 ml-7 overflow-y-scroll flex flex-wrap gap-5 scroll-smooth">
-      <div
-        class="card cursor-pointer ease-in-out bg-box-gray-2 w-48 h-60 rounded-lg flex gap-1 flex-col justify-center items-center">
-        <div class="bg-Chuttamalle bg-no-repeat bg-cover bg-center w-5/6 h-3/4 rounded-lg">
-          <img class="w-10 relative top-3/4 left-28 cursor-pointer" src="./Assests/play.png" alt="play">
-        </div>
-        <div class="w-full pl-5">
-          <h1 class="text-sm">Chuttamalle</h1>
-          <p class="text-xs text-gray-300">Shilpa Rao</p>
-        </div>
-      </div>
-
-      <div
-        class="card cursor-pointer ease-in-out bg-box-gray-2 w-48 h-60 rounded-lg flex gap-1 flex-col justify-center items-center">
-        <div class="bg-Lover bg-no-repeat bg-cover bg-center w-5/6 h-3/4 rounded-lg">
-          <img class="w-10 relative top-3/4 left-28 cursor-pointer" src="./Assests/play.png" alt="play">
-        </div>
-        <div class="w-full pl-5">
-          <h1 class="text-sm">Lover</h1>
-          <p class="text-xs text-gray-300">Diljit Dosanjh</p>
-        </div>
-      </div>
-
-      <div
-        class="card cursor-pointer ease-in-out bg-box-gray-2 w-48 h-60 rounded-lg flex gap-1 flex-col justify-center items-center">
-        <div class="bg-King-Shit bg-no-repeat bg-cover bg-center w-5/6 h-3/4 rounded-lg">
-          <img class="w-10 relative top-3/4 left-28 cursor-pointer" src="./Assests/play.png" alt="play">
-        </div>
-        <div class="w-full pl-5">
-          <h1 class="text-sm">King Shit</h1>
-          <p class="text-xs text-gray-300">Subh</p>
-        </div>
-      </div>
-
-      <div
-        class="card cursor-pointer ease-in-out bg-box-gray-2 w-48 h-60 rounded-lg flex gap-1 flex-col justify-center items-center">
-        <div class="bg-Softly bg-no-repeat bg-cover bg-center w-5/6 h-3/4 rounded-lg">
-          <img class="w-10 relative top-3/4 left-28 cursor-pointer" src="./Assests/play.png" alt="play">
-        </div>
-        <div class="w-full pl-5">
-          <h1 class="text-sm">Softly</h1>
-          <p class="text-xs text-gray-300">Karan Aujla</p>
-        </div>
-      </div>
-
-      <div
-        class="card cursor-pointer ease-in-out bg-box-gray-2 w-48 h-60 rounded-lg flex gap-1 flex-col justify-center items-center">
-        <div class="bg-Shiva-Thandavame bg-no-repeat bg-cover bg-center w-5/6 h-3/4 rounded-lg">
-          <img class="w-10 relative top-3/4 left-28 cursor-pointer" src="./Assests/play.png" alt="play">
-        </div>
-        <div class="w-full pl-5">
-          <h1 class="text-sm">Shiva Thandavame</h1>
-          <p class="text-xs text-gray-300">Jakes Bejoy</p>
-        </div>
-      </div>
-
-      <div
-        class="card cursor-pointer ease-in-out bg-box-gray-2 w-48 h-60 rounded-lg flex gap-1 flex-col justify-center items-center">
-        <div class="bg-Akhiyan-Gulab bg-no-repeat bg-cover bg-center w-5/6 h-3/4 rounded-lg">
-          <img class="w-10 relative top-3/4 left-28 cursor-pointer" src="./Assests/play.png" alt="play">
-        </div>
-        <div class="w-full pl-5">
-          <h1 class="text-sm">Akhiyan Gulab</h1>
-          <p class="text-xs text-gray-300">Mitran</p>
-        </div>
-      </div>
-
-      <div
-        class="card cursor-pointer ease-in-out bg-box-gray-2 w-48 h-60 rounded-lg flex gap-1 flex-col justify-center items-center">
-        <div class="bg-Diamond-Ni bg-no-repeat bg-cover bg-center w-5/6 h-3/4 rounded-lg">
-          <img class="w-10 relative top-3/4 left-28 cursor-pointer" src="./Assests/play.png" alt="play">
-        </div>
-        <div class="w-full pl-5">
-          <h1 class="text-sm">Diamond Ni</h1>
-          <p class="text-xs text-gray-300">Sachin-Jigar</p>
-        </div>
-      </div>
-
-      <div
-        class="card cursor-pointer ease-in-out bg-box-gray-2 w-48 h-60 rounded-lg flex gap-1 flex-col justify-center items-center">
-        <div class="bg-One-Love bg-no-repeat bg-cover bg-center w-5/6 h-3/4 rounded-lg">
-          <img class="w-10 relative top-3/4 left-28 cursor-pointer" src="./Assests/play.png" alt="play">
-        </div>
-        <div class="w-full pl-5">
-          <h1 class="text-sm">One Love</h1>
-          <p class="text-xs text-gray-300">Subh</p>
-        </div>
-      </div>
-
-      <div
-        class="card cursor-pointer ease-in-out bg-box-gray-2 w-48 h-60 rounded-lg flex gap-1 flex-col justify-center items-center">
-        <div class="bg-Kabir-Singh bg-no-repeat bg-cover bg-center w-5/6 h-3/4 rounded-lg">
-          <img class="w-10 relative top-3/4 left-28 cursor-pointer" src="./Assests/play.png" alt="play">
-        </div>
-        <div class="w-full pl-5">
-          <h1 class="text-sm">Kaise Hua</h1>
-          <p class="text-xs text-gray-300">Vishal Mishra</p>
-        </div>
-      </div>
-
-      <div
-        class="card cursor-pointer ease-in-out bg-box-gray-2 w-48 h-60 rounded-lg flex gap-1 flex-col justify-center items-center">
-        <div class="bg-Ayudha-Pooja bg-no-repeat bg-cover bg-center w-5/6 h-3/4 rounded-lg">
-          <img class="w-10 relative top-3/4 left-28 cursor-pointer" src="./Assests/play.png" alt="play">
-        </div>
-        <div class="w-full pl-5">
-          <h1 class="text-sm">Ayudha Pooja</h1>
-          <p class="text-xs text-gray-300">Kala Bhairava</p>
-        </div>
-      </div>
-
-      <div
-        class="card cursor-pointer ease-in-out bg-box-gray-2 w-48 h-60 rounded-lg flex gap-1 flex-col justify-center items-center">
-        <div class="bg-Sarphira bg-no-repeat bg-cover bg-center w-5/6 h-3/4 rounded-lg">
-          <img class="w-10 relative top-3/4 left-28 cursor-pointer" src="./Assests/play.png" alt="play">
-        </div>
-        <div class="w-full pl-5">
-          <h1 class="text-sm">Sarphira</h1>
-          <p class="text-xs text-gray-300">Pritam</p>
-        </div>
-      </div>
-
-      <div
-        class="card cursor-pointer ease-in-out bg-box-gray-2 w-48 h-60 rounded-lg flex gap-1 flex-col justify-center items-center">
-        <div class="bg-Seethakalam bg-no-repeat bg-cover bg-center w-5/6 h-3/4 rounded-lg">
-          <img class="w-10 relative top-3/4 left-28 cursor-pointer" src="./Assests/play.png" alt="play">
-        </div>
-        <div class="w-full pl-5">
-          <h1 class="text-sm">Seethakalam</h1>
-          <p class="text-xs text-gray-300">Yazin Nizar</p>
-        </div>
-      </div>
-
-      <div
-        class="card cursor-pointer ease-in-out bg-box-gray-2 w-48 h-60 rounded-lg flex gap-1 flex-col justify-center items-center">
-        <div class="bg-Pehle-bhi-main bg-no-repeat bg-cover bg-center w-5/6 h-3/4 rounded-lg">
-          <img class="w-10 relative top-3/4 left-28 cursor-pointer" src="./Assests/play.png" alt="play">
-        </div>
-        <div class="w-full pl-5">
-          <h1 class="text-sm">Pehle Bhi Main</h1>
-          <p class="text-xs text-gray-300">Vishal Mishra</p>
-        </div>
-      </div>
-    </div>
+    <div class="song-cards w-5/5 h-76% pt-7 pb-7 mr-7 ml-7 overflow-y-scroll flex flex-wrap gap-5 scroll-smooth"></div>
 
     <div class="music-player bg-box-gray-2 h-22 mr-3 ml-3 rounded-lg ">
       <div class="h-1/4 flex justify-center text-sm">
-        <h1 class="mt-2">Softly <span>- Karan Aujla</span></h1>
+        <h1 class="mt-2">Song <span>- Artist</span></h1>
       </div>
 
       <div class="h-1/4 flex justify-center items-center">
-        <p class="text-xs w-14 text-center">0:30</p>
-        <div class="seekbar w-90% h-1 flex items-center bg-white rounded-xl">
-          <div class="circle w-4 h-4 bg-white rounded-full"></div>
-        </div>
-        <p class="text-xs w-14 text-center">3:00</p>
+        <p id="playback_time" class="text-xs w-14 text-center">00:00</p>
+        <input id="seekbar" step="0.1" type="range" value="0" min="0" max="100"
+          class="w-90% rounded-lg h-1 cursor-pointer">
+        <p id="duration" class="text-xs w-14 text-center">00:00</p>
       </div>
 
       <div class="h-2/5">
         <div class="flex justify-center gap-7 items-center">
-          <img class="w-6 inline-block cursor-pointer" src="./Assests/suffle.png" alt="suffle">
-          <img class="w-6 inline-block cursor-pointer" src="./Assests/previous.png" alt="previous">
-          <img class="w-10 inline-block cursor-pointer" src="./Assests/play_player.png" alt="play">
-          <img class="w-6 inline-block cursor-pointer" src="./Assests/next.png" alt="next">
-          <img class="w-5 inline-block cursor-pointer" src="./Assests/repeat.png" alt="repeat">
+          <img id="suffle_btn" class="w-6 inline-block cursor-pointer" src="./Assests/suffle.png" alt="suffle">
+          <img id="previous_btn" class="w-6 inline-block cursor-pointer" src="./Assests/previous.png" alt="previous">
+          <img id="play_btn" class="w-10 inline-block cursor-pointer" src="./Assests/play_player.png" alt="play">
+          <img id="next_btn" class="w-6 inline-block cursor-pointer" src="./Assests/next.png" alt="next">
+          <img id="repeat_btn" class="w-5 inline-block cursor-pointer" src="./Assests/repeat.png" alt="repeat">
         </div>
       </div>
     </div>
   </div>
+
+  <script src="./script.js"></script>
 </body>
 
 </html>
