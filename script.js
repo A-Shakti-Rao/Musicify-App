@@ -129,12 +129,12 @@ async function apiData() {
 
   //Changing The Play Button When Song Stops
   currentSong.addEventListener("pause", () => {
-    play_btn.src = "http://127.0.0.1:3000/Assests/play_player.png";
+    play_btn.src = "https://127.0.0.1:3000/Assests/play_player.png";
   });
 
   //Changing The Play Button When Song Plays
   currentSong.addEventListener("play", () => {
-    play_btn.src = "http://127.0.0.1:3000/Assests/pause.png";
+    play_btn.src = "https://127.0.0.1:3000/Assests/pause.png";
 
     //Storing The Current Song Into Local Storage
     localStorage.setItem("currentSong", currentSong.src);
@@ -146,14 +146,14 @@ async function apiData() {
   //Event On Playing Button
   const play_btn = document.getElementById("play_btn");
   play_btn.addEventListener("click", () => {
-    if (play_btn.src == "http://127.0.0.1:3000/Assests/pause.png") {
+    if (play_btn.src == "https://127.0.0.1:3000/Assests/pause.png") {
       currentSong.pause();
-      play_btn.src = "http://127.0.0.1:3000/Assests/play_player.png";
+      play_btn.src = "https://127.0.0.1:3000/Assests/play_player.png";
     } else if (
-      play_btn.src == "http://127.0.0.1:3000/Assests/play_player.png"
+      play_btn.src == "https://127.0.0.1:3000/Assests/play_player.png"
     ) {
       currentSong.play();
-      play_btn.src = "http://127.0.0.1:3000/Assests/pause.png";
+      play_btn.src = "https://127.0.0.1:3000/Assests/pause.png";
     }
   });
 
@@ -164,7 +164,7 @@ async function apiData() {
     suffleCount++;
     let checkerSuffle = bothSuffleRepeatOnError(suffleCount, repeatCount);
     if (suffleCount % 2 !== 0 && checkerSuffle === false) {
-      suffle_btn.src = "http://127.0.0.1:3000/Assests/suffle-on.png";
+      suffle_btn.src = "https://127.0.0.1:3000/Assests/suffle-on.png";
       currentSong.addEventListener("ended", () => {
         if (suffleCount % 2 !== 0 && checkerSuffle === false) {
           let randomIndex = Math.floor(Math.random() * result.data.songCount);
@@ -175,7 +175,7 @@ async function apiData() {
         }
       });
     } else {
-      suffle_btn.src = "http://127.0.0.1:3000/Assests/suffle.png";
+      suffle_btn.src = "https://127.0.0.1:3000/Assests/suffle.png";
     }
   });
 
@@ -187,10 +187,10 @@ async function apiData() {
     let checkerRepeat = bothSuffleRepeatOnError(suffleCount, repeatCount);
     if (repeatCount % 2 !== 0 && checkerRepeat === false) {
       currentSong.loop = true;
-      repeat_btn.src = "http://127.0.0.1:3000/Assests/repeat-once.png";
+      repeat_btn.src = "https://127.0.0.1:3000/Assests/repeat-once.png";
     } else {
       currentSong.loop = false;
-      repeat_btn.src = "http://127.0.0.1:3000/Assests/repeat.png";
+      repeat_btn.src = "https://127.0.0.1:3000/Assests/repeat.png";
     }
   });
 
@@ -217,8 +217,8 @@ async function apiData() {
   currentSong.addEventListener("ended", () => {
     console.log("hi");
     if (
-      suffle_btn.src == "http://127.0.0.1:3000/Assests/suffle.png" &&
-      repeat_btn.src == "http://127.0.0.1:3000/Assests/repeat.png"
+      suffle_btn.src == "https://127.0.0.1:3000/Assests/suffle.png" &&
+      repeat_btn.src == "https://127.0.0.1:3000/Assests/repeat.png"
     ) {
       playNextSong();
     }
