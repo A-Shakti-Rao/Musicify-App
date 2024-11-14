@@ -25,7 +25,7 @@ async function apiData() {
           <img class="w-full object-cover rounded-lg h-full" src="${imgURL}"
             alt="image">
           <img class="w-10 absolute left-2/3 top-3/4 cursor-pointer max-lg:top-[5.7rem] max-lg:left-20 max-lg:w-8"
-            src="./Assests/play.png" alt="play">
+            src="./Assests/play.svg" alt="play">
         </div>
         <div class="w-full pl-5 max-lg:pl-4">
           <div class="relative h-5 text-sm w-90% overflow-hidden">
@@ -66,16 +66,27 @@ async function apiData() {
 
   // Playing The Songs Whenever User Clicks On The Card
   let currentSong = new Audio();
-  currentSong.id = 0;
-  currentSong.src = localStorage.getItem("currentSong");
+  let isplaying = false;
+  let localStorageFilled = false;
+  if (localStorageFilled == false) {
+    currentSong.id = 0;
+  } else {
+    currentSong.id = localStorage.getItem("currentSong.id");
+  }
+  if (localStorageFilled == false) {
+    currentSong.src = result.data.songs[0].downloadUrl[4].url;
+  } else {
+    currentSong.src = localStorage.getItem("currentSong");
+  }
   musicPlayerUpdate();
-  document.getElementById("play_btn").src = "./Assests/play_player.png";
 
   song_cards.childNodes.forEach((element) => {
     element.addEventListener("click", (e) => {
       currentSong.id = Number(element.childNodes[0].classList[0]);
       currentSong.src = result.data.songs[currentSong.id].downloadUrl[4].url;
       currentSong.play();
+      isplaying = true;
+      localStorageFilled = true;
       musicPlayerUpdate();
     });
   });
@@ -87,7 +98,11 @@ async function apiData() {
     const artist_name = result.data.songs[currentSong.id].artists.all[0].name;
     music_player.firstElementChild.firstElementChild.innerHTML = `${song_name} - ${artist_name}`;
 
-    document.getElementById("play_btn").src = "./Assests/pause.png";
+    if (isplaying == true) {
+      document.getElementById("play_btn").src = "./Assests/playing.svg";
+    } else {
+      document.getElementById("play_btn").src = "./Assests/paused.svg";
+    }
 
     //Function That Converts Seconds Into Minutes
     function convertSecondsToMinutes(seconds) {
@@ -114,7 +129,6 @@ async function apiData() {
     function updateSeekbar() {
       const percentage = (currentSong.currentTime / currentSong.duration) * 100;
       seekbar.value = percentage;
-      seekbar.style.background = `linear-gradient(to right, #38a169 ${percentage}%, #e2e8f0 ${percentage}%)`;
     }
 
     // Function to seek the song to a clicked position on the seekbar
@@ -129,12 +143,15 @@ async function apiData() {
 
   //Changing The Play Button When Song Stops
   currentSong.addEventListener("pause", () => {
-    play_btn.src = "https://127.0.0.1:3000/Assests/play_player.png";
+    play_btn.src = play_btn.src.replace("playing", "paused");
+    isplaying = false;
   });
-
+  console.log(currentSong.id);
   //Changing The Play Button When Song Plays
   currentSong.addEventListener("play", () => {
-    play_btn.src = "https://127.0.0.1:3000/Assests/pause.png";
+    isplaying = true;
+    localStorageFilled = true;
+    play_btn.src = play_btn.src.replace("paused.svg", "playing.svg");
 
     //Storing The Current Song Into Local Storage
     localStorage.setItem("currentSong", currentSong.src);
@@ -146,14 +163,12 @@ async function apiData() {
   //Event On Playing Button
   const play_btn = document.getElementById("play_btn");
   play_btn.addEventListener("click", () => {
-    if (play_btn.src == "https://127.0.0.1:3000/Assests/pause.png") {
+    if (play_btn.src.search("playing.svg") >= 0) {
       currentSong.pause();
-      play_btn.src = "https://127.0.0.1:3000/Assests/play_player.png";
-    } else if (
-      play_btn.src == "https://127.0.0.1:3000/Assests/play_player.png"
-    ) {
+      play_btn.src = play_btn.src.replace("playing.svg", "paused.svg");
+    } else {
       currentSong.play();
-      play_btn.src = "https://127.0.0.1:3000/Assests/pause.png";
+      play_btn.src = play_btn.src.replace("paused.svg", "playing.svg");
     }
   });
 
@@ -164,7 +179,7 @@ async function apiData() {
     suffleCount++;
     let checkerSuffle = bothSuffleRepeatOnError(suffleCount, repeatCount);
     if (suffleCount % 2 !== 0 && checkerSuffle === false) {
-      suffle_btn.src = "https://127.0.0.1:3000/Assests/suffle-on.png";
+      suffle_btn.src = suffle_btn.src.replace("suffle.svg", "suffle-on.svg");
       currentSong.addEventListener("ended", () => {
         if (suffleCount % 2 !== 0 && checkerSuffle === false) {
           let randomIndex = Math.floor(Math.random() * result.data.songCount);
@@ -175,7 +190,7 @@ async function apiData() {
         }
       });
     } else {
-      suffle_btn.src = "https://127.0.0.1:3000/Assests/suffle.png";
+      suffle_btn.src = suffle_btn.src.replace("suffle-on.svg", "suffle.svg");
     }
   });
 
@@ -187,10 +202,10 @@ async function apiData() {
     let checkerRepeat = bothSuffleRepeatOnError(suffleCount, repeatCount);
     if (repeatCount % 2 !== 0 && checkerRepeat === false) {
       currentSong.loop = true;
-      repeat_btn.src = "https://127.0.0.1:3000/Assests/repeat-once.png";
+      repeat_btn.src = repeat_btn.src.replace("repeat.svg", "repeat-once.svg");
     } else {
       currentSong.loop = false;
-      repeat_btn.src = "https://127.0.0.1:3000/Assests/repeat.png";
+      repeat_btn.src = repeat_btn.src.replace("repeat-once.svg", "repeat.svg");
     }
   });
 
@@ -215,10 +230,9 @@ async function apiData() {
 
   //Calling The Play NextSong Function When The Song Is Ended
   currentSong.addEventListener("ended", () => {
-    console.log("hi");
     if (
-      suffle_btn.src == "https://127.0.0.1:3000/Assests/suffle.png" &&
-      repeat_btn.src == "https://127.0.0.1:3000/Assests/repeat.png"
+      suffle_btn.src.search("suffle.svg") >= 0 &&
+      repeat_btn.src.search("repeat.svg") >= 0
     ) {
       playNextSong();
     }
